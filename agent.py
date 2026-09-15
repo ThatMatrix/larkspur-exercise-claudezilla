@@ -68,7 +68,7 @@ def run_agent(pnr: str, last_name: str, message: str) -> str:            # ✏�
     answer = ""
     turns = 1
     while response.stop_reason == "tool_use" and turns < MAX_TOOL_CALLS:
-        messages.append({"role": "assistant", "content": text_of(response)})
+        messages.append({"role": "assistant", "content": response.content})
         messages.append({"role": "user", "content": tool_results(response)})
         answer = text_of(response)
         response = client.messages.create(
@@ -77,7 +77,7 @@ def run_agent(pnr: str, last_name: str, message: str) -> str:            # ✏�
         )
         turns += 1
 
-    return answer
+    return text_of(response)
 
 
 def tool_list() -> List[Dict[str, Any]]:                   # ✏️ Build 2, step 2.2
@@ -119,17 +119,17 @@ def build_tools() -> List[Dict[str, Any]]:                 # ✏️ Build 1, ste
                 "type": "object",
                 "properties": {
                     "flight_no": {"type": "string"},
-                    "date": {"type": "string", "description": "MM/DD/YYYY"},
+                    "date": {"type": "string", "description": "YYYY-MM-DD"},
                 },
                 "required": ["flight_no", "date"],
             },
         },
         {
             "name": "search_alternatives",
-            "description": "search",
+            "description": "Search for alternative flights available to rebook a disrupted passenger. Call this after get_flight_status confirms a cancellation or significant delay. Returns a list of options with option_id, flight details, and availability.",
             "input_schema": {
                 "type": "object",
-                "properties": {"pnr": {"type": "string"}},
+                "properties": {"pnr": {"type": "string", "description": "The booking confirmation code"}},
                 "required": ["pnr"],
             },
         },

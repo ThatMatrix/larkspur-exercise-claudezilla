@@ -7,5 +7,5 @@ The review reads these names. Nothing else comes off the list. Your pod still
 decides in the moment who does what.
 
 - <Name>
-- <Name>
+- Noé Urso
 - <Name>

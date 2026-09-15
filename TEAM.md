@@ -1,4 +1,3 @@
-# Pod: <claudezilla>
 # Pod: Claudezilla
 
 Whoever made the repo types the pod name above and one name per line below,
@@ -8,9 +7,6 @@ The review reads these names. Nothing else comes off the list. Your pod still
 decides in the moment who does what.
 
 - Ammad
-- <Name>
+- Noé Urso
 - Rafik YAHIA
 - Emma Smith
-- <Name>
-- Noé Urso
-- <Name>

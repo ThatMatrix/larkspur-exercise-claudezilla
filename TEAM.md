@@ -1,4 +1,4 @@
-# Pod: <your pod name>
+# Pod: <claudezilla>
 
 Whoever made the repo types the pod name above and one name per line below,
 then commits it once. Nobody else has to touch this file.
@@ -8,6 +8,7 @@ decides in the moment who does what.
 
 - Ammad
 - <Name>
+- Rafik YAHIA
 - <Name>
 - Noé Urso
 - <Name>

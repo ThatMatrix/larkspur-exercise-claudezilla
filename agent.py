@@ -44,7 +44,7 @@ EXTRA_TOOLS: List[Dict[str, Any]] = [    # ✏️ Build 2, step 2.1: schemas for
         },
     },
 ]
-LOCAL_TOOLS: Dict[str, Any] = {"next_available_day": next_available_day}  # ✏️ Build 2, step 2.1: the functions behind them
+LOCAL_TOOLS: Dict[str, Any] = {}  # ✏️ Build 2, step 2.1: the functions behind them
 
 
 def text_of(response) -> str:

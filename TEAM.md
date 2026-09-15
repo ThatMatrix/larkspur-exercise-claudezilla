@@ -9,3 +9,5 @@ decides in the moment who does what.
 - Ammad
 - <Name>
 - <Name>
+- Noé Urso
+- <Name>

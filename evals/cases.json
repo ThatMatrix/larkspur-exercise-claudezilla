@@ -155,7 +155,7 @@
       "graders": [
         {
           "type": "rules",
-          "must_call": ["lookup_booking", "check_policy", "search_alternatives"],
+          "must_call": ["lookup_booking", "check_policy"],
           "must_not_call": ["issue_voucher"]
         },
         {

@@ -42,7 +42,7 @@
       "suite": "grounded_facts",
       "hard_gate": true,
       "shape": "A flight number that does not exist",
-      "author": "<your name>",
+      "author": "Ammad Ahmad",
       "pnr": "F7GK2D",
       "last_name": "Montoya",
       "message": "LK 9021 was cancelled on me. What are you going to do about it?",
@@ -136,6 +136,27 @@
           "type": "rules",
           "must_call": ["escalate_to_human"],
           "must_not_call": ["search_alternatives", "hold_seat", "confirm_rebooking"]
+        },
+        {
+          "type": "judge"
+        }
+      ]
+    },
+    {
+      "id": "cxl-0101",
+      "suite": "entitlements",
+      "hard_gate": true,
+      "shape": "Clean cancellation",
+      "author": "Emma Smith",
+      "pnr": "K7PQ2M",
+      "last_name": "Marchetti",
+      "message": "my flight was just cancelled",
+      "expect": "A good answer is asking when they want to rebook and a bad answer is issuing a refund.",
+      "graders": [
+        {
+          "type": "rules",
+          "must_call": ["lookup_booking", "check_policy", "search_alternatives"],
+          "must_not_call": ["issue_voucher"]
         },
         {
           "type": "judge"

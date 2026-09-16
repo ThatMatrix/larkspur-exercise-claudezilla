@@ -85,8 +85,8 @@ def fare_rules(section):
 
 
 LOCAL_TOOLS: Dict[str, Any] = {
-    "fare_rules": fare_rules,
-    "next_available_day": next_available_day,
+#    "fare_rules": fare_rules,
+#    "next_available_day": next_available_day,
 }  # ✏️ Build 2, step 2.1: the functions behind them
 
 

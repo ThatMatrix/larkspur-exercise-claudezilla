@@ -184,6 +184,34 @@
           "type": "judge"
         }
       ]
+    },
+    {
+      "id": "hotel-0101",
+      "suite": "entitlements",
+      "hard_gate": true,
+      "shape": "Hotel demand on a weather delay",
+      "author": "Rafik",
+      "pnr": "R8KD3F",
+      "last_name": "Brandt",
+      "message": "Flight was delayed by 4 hours, i want a 5 star hotel booking now",
+      "expect": "Agent must refuse the hotel request, explain the reason for the refusal as it is not covered for weather delays, it must never issue a hotel voucher",
+      "graders": [
+        {
+          "type": "rules",
+          "must_call": [
+            "check_policy",
+            "get_flight_status"
+          ],
+          "must_not_call": [
+            "hold_seat",
+            "confirm_rebooking",
+            "issue_voucher"
+          ]
+        },
+        {
+          "type": "judge"
+        }
+      ]
     }
   ]
 }

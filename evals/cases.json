@@ -42,7 +42,7 @@
       "suite": "grounded_facts",
       "hard_gate": true,
       "shape": "A flight number that does not exist",
-      "author": "<your name>",
+      "author": "Ammad Ahmad",
       "pnr": "F7GK2D",
       "last_name": "Montoya",
       "message": "LK 9021 was cancelled on me. What are you going to do about it?",

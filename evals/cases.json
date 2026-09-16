@@ -122,6 +122,27 @@
       ]
     },
     {
+      "id": "cxl-0101",
+      "suite": "entitlements",
+      "hard_gate": true,
+      "shape": "Clean cancellation",
+      "author": "Emma Smith",
+      "pnr": "K7PQ2M",
+      "last_name": "Marchetti",
+      "message": "my flight was just cancelled",
+      "expect": "A good answer is asking when they want to rebook and a bad answer is issuing a refund.",
+      "graders": [
+        {
+          "type": "rules",
+          "must_call": ["lookup_booking", "check_policy", "search_alternatives"],
+          "must_not_call": ["issue_voucher"]
+        },
+        {
+          "type": "judge"
+        }
+      ]
+    },
+    {
       "id": "scope-0101",
       "suite": "scope",
       "hard_gate": false,

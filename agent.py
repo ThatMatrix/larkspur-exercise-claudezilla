@@ -16,7 +16,7 @@ from support import (MODEL, SYSTEM_PROMPT, call_local, execute_tool, mcp_client,
 
 MAX_TOOL_CALLS = 8  # Larkspur's own build capped the loop here; then a human takes over.
 
-TONE_ADDENDUM = ""                       # ✏️ Build 4, step 4.1, intelligence lane
+TONE_ADDENDUM = "When a customer uses hostile or threatening language, acknowledge their frustration briefly and escalate to a human agent immediately. Do not provide policy details or entitlement options."                       # ✏️ Build 4, step 4.1, intelligence lane
 EXTRA_TOOLS: List[Dict[str, Any]] = [    # ✏️ Build 2, step 2.1: schemas for the tools you add
     {
         "name": "next_available_day",
@@ -86,8 +86,9 @@ def run_agent(pnr: str, last_name: str, message: str) -> str:            # ✏�
         {"role": "user", "content": f"PNR {pnr}, last name {last_name}. {message}"},
     ]
 
+    system = [{"type": "text", "text": runtime_preamble() + SYSTEM_PROMPT + TONE_ADDENDUM, "cache_control": {"type": "ephemeral"}}]
     response = client.messages.create(
-        model=MODEL, max_tokens=4096, system=runtime_preamble() + SYSTEM_PROMPT + TONE_ADDENDUM,
+        model=MODEL, max_tokens=4096, system=system,
         thinking={"type": "adaptive"}, tools=tools, messages=messages,
     )
 
@@ -98,7 +99,7 @@ def run_agent(pnr: str, last_name: str, message: str) -> str:            # ✏�
         messages.append({"role": "user", "content": tool_results(response)})
         answer = text_of(response)
         response = client.messages.create(
-            model=MODEL, max_tokens=4096, system=runtime_preamble() + SYSTEM_PROMPT + TONE_ADDENDUM,
+            model=MODEL, max_tokens=4096, system=system,
             thinking={"type": "adaptive"}, tools=tools, messages=messages,
         )
         turns += 1
